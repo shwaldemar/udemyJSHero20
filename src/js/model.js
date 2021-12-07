@@ -60,7 +60,6 @@ export const loadSearchResults = async function (query) {
       };
     });
     state.search.page = 1;
-    // console.log('MSSQ:', query, 'MSSR: ', state.search.results);
   } catch (err) {
     console.error(`${err} 💥💥💥💥`);
     throw err;
@@ -90,7 +89,7 @@ const persistBookmarks = function () {
 export const addBookmark = function (recipe) {
   //Add Bookmark
   state.bookmarks.push(recipe);
-  console.log(state.bookmarks);
+
   //Mark current recipe as bookmarked
   if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
   persistBookmarks();
@@ -106,7 +105,6 @@ export const deleteBookmark = function (id) {
 };
 
 export const uploadRecipe = async function (newRecipe) {
-  //   console.log('M newRecipe array: ', Object.entries(newRecipe));
   try {
     const ingredients = Object.entries(newRecipe)
       .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
@@ -130,10 +128,8 @@ export const uploadRecipe = async function (newRecipe) {
       ingredients,
     };
 
-    //console.log('MIs: ', ingredients);
-    // console.log('MR: ', recipe);
     const data = await AJAX(`${API_URL}?key=${API_KEY}`, recipe);
-    // console.log('MNR added: ', data);
+
     state.recipe = createRecipeObject(data);
     addBookmark(state.recipe);
   } catch (err) {

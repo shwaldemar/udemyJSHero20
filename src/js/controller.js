@@ -10,10 +10,6 @@ import { MODAL_CLOSE_SEC } from './config.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 /*
 1.Display number of pages between pagination buttons.
 2.Ability to sort search results by duration or number of ingredients. No.
@@ -61,8 +57,6 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     //3. load search results
-    // console.log('CMSSQ:', query, 'CMSSR: ', model.state.search.results);
-    // resultsView.render(model.state.search.results);
 
     resultsView.render(model.getSearchResultsPage());
 

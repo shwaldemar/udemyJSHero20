@@ -1,5 +1,6 @@
 import View from './View.js';
 import icons from '../../img/icons.svg';
+import { RES_PER_PAGE } from '../config.js';
 
 class addRecipeView extends View {
   _parentElement = document.querySelector('.upload');
@@ -42,6 +43,5 @@ class addRecipeView extends View {
 
   _generateMarkup() {}
 }
-import { RES_PER_PAGE } from '../config.js';
 
 export default new addRecipeView();
